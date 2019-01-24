@@ -1,0 +1,141 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>React getting started</title>
+    <style>
+        .main{
+            border: #666 2px solid;
+            margin: 100px;
+        }
+        .incrementButton{
+           
+        display: inline-block;
+  border-radius: 4px;
+  background-color: rgb(81, 211, 179);
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 18px;
+  padding: 20px;
+  width: 150px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin-left: 350px;
+    }
+    p {
+  text-indent: 20px;
+  text-align: center;
+  letter-spacing: 3px;
+  font-size: 30px;
+  margin-top: 100px;
+}
+.decrementButton {
+    margin: 150px;
+  position: relative;
+  background-color:#f4511e ;
+  border: none;
+  font-size: 18px;;
+  color: #FFFFFF;
+  padding: 20px;
+  width: 150px;
+  text-align: center;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  text-decoration: none;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.decrementButton:after {
+  content: "";
+  background: #f1f1f1;
+  display: block;
+  position: absolute;
+  padding-top: 300%;
+  padding-left: 350%;
+  margin-left: -20px !important;
+  margin-top: -120%;
+  opacity: 0;
+  transition: all 0.8s
+}
+
+.decrementButton:after {
+  padding: 0;
+  margin: 0;
+  opacity: 1;
+  transition: 0s
+}
+.resetButton {
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 24px;
+  
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 15px;
+  width: 150px;
+}
+
+.resetButton:hover {background-color: #3e8e41}
+
+.resetButton {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+    </style>
+</head>
+
+<body>
+    <!-- Root container for react components -->
+    <div id='root'></div>
+
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+
+    <script type="text/babel">
+    class Counter extends React.Component{
+        constructor(props)
+        {
+            super(props);
+            this.state ={counter:0}
+
+        }
+        Increment=(event)=>
+        {
+            this.setState((state) =>{return {counter:state.counter +1} })
+        }
+        Decrement=(event)=>
+        {
+            this.setState((state) =>{return {counter:state.counter -1} })
+        }
+        Reset=(event)=>
+        {
+            this.setState((state) =>{return {counter:0} })
+        }
+        render()
+        {
+            return(
+                <div className="main">
+                <p>Counter {this.state.counter}</p>
+                <button onClick={this.Increment} className="incrementButton"> Increment</button>
+                <button onClick={this.Decrement} className="decrementButton"> Decrement</button>
+                <button onClick={this.Reset} className="resetButton"> Reset</button>
+                
+                </div>
+            )
+        }
+
+    }
+    ReactDOM.render(<Counter />, document.getElementById('root'));
+    </script>
+</body>
+
+</html>
